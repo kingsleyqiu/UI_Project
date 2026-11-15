@@ -1,0 +1,12 @@
+.env
+.env.*
+!.env.example
+node_modules/
+.npm-cache/
+output/
+tmp/
+*.log
+*.pdf
+*.zip
+Thumbs.db
+.DS_Store

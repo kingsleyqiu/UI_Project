@@ -1,0 +1,450 @@
+[
+  {
+    "checked": false,
+    "index": 0,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "10"
+  },
+  {
+    "checked": false,
+    "index": 1,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "12"
+  },
+  {
+    "checked": true,
+    "index": 2,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "14"
+  },
+  {
+    "checked": false,
+    "index": 3,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "16"
+  },
+  {
+    "checked": true,
+    "index": 4,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "14SCPFEAST"
+  },
+  {
+    "checked": false,
+    "index": 5,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "14HTTPFEAS"
+  },
+  {
+    "checked": false,
+    "index": 6,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "14TPFEAST"
+  },
+  {
+    "checked": true,
+    "index": 7,
+    "tag": "INPUT",
+    "type": "checkbox",
+    "value": "C"
+  },
+  {
+    "checked": false,
+    "index": 8,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "1/2"
+  },
+  {
+    "checked": true,
+    "index": 9,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "1/1"
+  },
+  {
+    "checked": false,
+    "index": 10,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "2/2"
+  },
+  {
+    "checked": false,
+    "index": 11,
+    "tag": "SELECT",
+    "type": "select-one",
+    "value": "1.5"
+  },
+  {
+    "checked": true,
+    "index": 12,
+    "tag": "INPUT",
+    "type": "checkbox",
+    "value": "X"
+  },
+  {
+    "checked": true,
+    "index": 13,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "X"
+  },
+  {
+    "checked": false,
+    "index": 14,
+    "tag": "SELECT",
+    "type": "select-one",
+    "value": "1"
+  },
+  {
+    "checked": false,
+    "index": 15,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "Q"
+  },
+  {
+    "checked": false,
+    "index": 16,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "Xf"
+  },
+  {
+    "checked": false,
+    "index": 17,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "Xm"
+  },
+  {
+    "checked": false,
+    "index": 18,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "Rd"
+  },
+  {
+    "checked": false,
+    "index": 19,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "Xw"
+  },
+  {
+    "checked": true,
+    "index": 20,
+    "tag": "INPUT",
+    "type": "checkbox",
+    "value": "P"
+  },
+  {
+    "checked": false,
+    "index": 21,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "1/2"
+  },
+  {
+    "checked": true,
+    "index": 22,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "1/1"
+  },
+  {
+    "checked": false,
+    "index": 23,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "2/2"
+  },
+  {
+    "checked": false,
+    "index": 24,
+    "tag": "SELECT",
+    "type": "select-one",
+    "value": "1.5"
+  },
+  {
+    "checked": false,
+    "index": 25,
+    "tag": "INPUT",
+    "type": "checkbox",
+    "value": "Xp"
+  },
+  {
+    "checked": false,
+    "index": 26,
+    "tag": "INPUT",
+    "type": "checkbox",
+    "value": "S"
+  },
+  {
+    "checked": false,
+    "index": 27,
+    "tag": "INPUT",
+    "type": "checkbox",
+    "value": "B"
+  },
+  {
+    "checked": false,
+    "index": 28,
+    "tag": "INPUT",
+    "type": "checkbox",
+    "value": "H"
+  },
+  {
+    "checked": false,
+    "index": 29,
+    "tag": "INPUT",
+    "type": "checkbox",
+    "value": "K"
+  },
+  {
+    "checked": false,
+    "index": 30,
+    "tag": "INPUT",
+    "type": "checkbox",
+    "value": "D"
+  },
+  {
+    "checked": false,
+    "index": 31,
+    "tag": "INPUT",
+    "type": "checkbox",
+    "value": "St"
+  },
+  {
+    "checked": false,
+    "index": 32,
+    "tag": "INPUT",
+    "type": "checkbox",
+    "value": "E"
+  },
+  {
+    "checked": false,
+    "index": 33,
+    "tag": "INPUT",
+    "type": "checkbox",
+    "value": "Fe"
+  },
+  {
+    "checked": false,
+    "index": 34,
+    "tag": "INPUT",
+    "type": "checkbox",
+    "value": "Pa"
+  },
+  {
+    "checked": false,
+    "index": 35,
+    "tag": "INPUT",
+    "type": "checkbox",
+    "value": "Cp"
+  },
+  {
+    "checked": false,
+    "index": 36,
+    "tag": "INPUT",
+    "type": "checkbox",
+    "value": "Z"
+  },
+  {
+    "checked": false,
+    "index": 37,
+    "tag": "INPUT",
+    "type": "checkbox",
+    "value": "R"
+  },
+  {
+    "checked": false,
+    "index": 38,
+    "tag": "INPUT",
+    "type": "checkbox",
+    "value": "V"
+  },
+  {
+    "checked": false,
+    "index": 39,
+    "tag": "INPUT",
+    "type": "checkbox",
+    "value": "G"
+  },
+  {
+    "checked": true,
+    "index": 40,
+    "tag": "INPUT",
+    "type": "checkbox",
+    "value": "M"
+  },
+  {
+    "checked": false,
+    "index": 41,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "1/2"
+  },
+  {
+    "checked": true,
+    "index": 42,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "1/1"
+  },
+  {
+    "checked": false,
+    "index": 43,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "2/2"
+  },
+  {
+    "checked": false,
+    "index": 44,
+    "tag": "SELECT",
+    "type": "select-one",
+    "value": "1"
+  },
+  {
+    "checked": false,
+    "index": 45,
+    "tag": "INPUT",
+    "type": "checkbox",
+    "value": "N"
+  },
+  {
+    "checked": false,
+    "index": 46,
+    "tag": "INPUT",
+    "type": "checkbox",
+    "value": "O"
+  },
+  {
+    "checked": false,
+    "index": 47,
+    "tag": "INPUT",
+    "type": "checkbox",
+    "value": "T"
+  },
+  {
+    "checked": false,
+    "index": 48,
+    "tag": "INPUT",
+    "type": "checkbox",
+    "value": "J"
+  },
+  {
+    "checked": false,
+    "index": 49,
+    "tag": "INPUT",
+    "type": "checkbox",
+    "value": "Sp"
+  },
+  {
+    "checked": false,
+    "index": 50,
+    "tag": "INPUT",
+    "type": "checkbox",
+    "value": "Rp"
+  },
+  {
+    "checked": false,
+    "index": 51,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "LD"
+  },
+  {
+    "checked": true,
+    "index": 52,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "NB"
+  },
+  {
+    "checked": false,
+    "index": 53,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "WD"
+  },
+  {
+    "checked": true,
+    "index": 54,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "PIECT"
+  },
+  {
+    "checked": false,
+    "index": 55,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "SQCT"
+  },
+  {
+    "checked": false,
+    "index": 56,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "UNCT"
+  },
+  {
+    "checked": false,
+    "index": 57,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "OREG"
+  },
+  {
+    "checked": true,
+    "index": 58,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "NOOREG"
+  },
+  {
+    "checked": false,
+    "index": 59,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "RED_FLAKES"
+  },
+  {
+    "checked": true,
+    "index": 60,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "NO_RED_FLAKES"
+  },
+  {
+    "checked": false,
+    "index": 61,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "GAR_HERB"
+  },
+  {
+    "checked": true,
+    "index": 62,
+    "tag": "INPUT",
+    "type": "radio",
+    "value": "NO_GAR_HERB"
+  },
+  {
+    "checked": false,
+    "index": 63,
+    "tag": "SELECT",
+    "type": "select-one",
+    "value": "1"
+  }
+]
