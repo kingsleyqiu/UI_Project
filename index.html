@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A pizza-ordering prototype with a conversational avatar.">
+  <title>Pizza Ordering Assistant</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell header-content">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 6c5-3 11-3 16 0l-8 15L4 6Z"/><path d="M6 9c4-2 8-2 12 0"/>
+            <path d="M10 12h.01m4 1h.01m-2 3h.01"/>
+          </svg>
+        </span>
+        <span>Pizza Ordering Assistant</span>
+      </div>
+      <button class="quiet-button" id="restart" type="button" disabled>Start over</button>
+    </div>
+  </header>
+
+  <main class="shell">
+    <h1>Let’s order pizza.</h1>
+    <div class="order-layout">
+      <section class="assistant panel" aria-labelledby="prompt">
+        <div class="conversation">
+          <div class="avatar-stage" aria-hidden="true">
+            <svg id="avatar" viewBox="0 0 240 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="122" cy="112" r="92" fill="#FCE5BF"/>
+              <ellipse cx="120" cy="195" rx="59" ry="10" fill="#E7AA94" opacity=".42"/>
+              <path d="M66 126c-11 4-19 0-25-9m131 10c11 3 20-2 24-12M111 174l-7 16m25-16 7 16" stroke="#442720" stroke-width="5" stroke-linecap="round"/>
+              <path d="M34 115c-5-9 4-15 10-7l5 4c3 3 0 9-4 10-4 1-8-3-11-7Zm171 0c5-9-4-15-10-7l-5 4c-3 3 0 9 4 10 4 1 8-3 11-7Z" fill="#FFF9EB" stroke="#442720" stroke-width="3"/>
+              <path d="M49 94c32-25 107-27 142-1l-61 90c-5 8-15 8-20 0L49 94Z" fill="#FFD475" stroke="#442720" stroke-width="4" stroke-linejoin="round"/>
+              <path d="M50 102c41-23 98-23 139 0 8 4 16-6 10-12-35-31-123-31-158 0-6 6 2 16 9 12Z" fill="#E78D53" stroke="#442720" stroke-width="4" stroke-linejoin="round"/>
+              <path d="M85 84V61c-17-2-21-16-13-26 5-7 15-9 23-5 2-13 13-22 26-22s24 8 27 21c8-3 17-1 23 6 8 10 4 24-13 26v23c-20-7-53-7-73 0Z" fill="#FFF9EB" stroke="#442720" stroke-width="4" stroke-linejoin="round"/>
+              <path d="M95 63c17-4 36-4 54 0" stroke="#E1BB99" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="81" cy="117" r="8" fill="#C94637"/>
+              <circle cx="158" cy="118" r="8" fill="#C94637"/>
+              <circle cx="122" cy="163" r="7" fill="#C94637"/>
+              <ellipse cx="98" cy="123" rx="4.4" ry="6.1" fill="#442720"/>
+              <ellipse cx="141" cy="123" rx="4.4" ry="6.1" fill="#442720"/>
+              <path class="mouth-idle" d="M112 138c3 5 8 6 12 1" stroke="#442720" stroke-width="3" stroke-linecap="round"/>
+              <ellipse class="mouth-speech" cx="119" cy="141" rx="7" ry="8" fill="#442720"/>
+              <path d="M30 76v10m-5-5h10m172-14v12m-6-6h12" stroke="#C7513C" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="dialogue">
+            <div class="assistant-meta">
+              <span class="assistant-name">Pip</span>
+              <span id="status" class="status" role="status">Waiting</span>
+            </div>
+            <p id="lead">Hi! I can help you order a pizza.</p>
+            <h2 id="prompt" tabindex="-1" aria-live="polite">Would you like pickup or delivery?</h2>
+            <div id="choices" class="choices" aria-label="Suggested answers"></div>
+            <p id="feedback" class="feedback" role="status"></p>
+          </div>
+        </div>
+        <form id="answer-form" class="composer">
+          <label for="answer">Your answer</label>
+          <div class="composer-controls">
+            <input id="answer" type="text" autocomplete="off" maxlength="120" placeholder="Type your answer">
+            <button id="mic" class="button button-outline" type="button" aria-pressed="false" hidden>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                <rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0m-7 7v3m-3 0h6"/>
+              </svg>
+              <span id="mic-label">Mic</span>
+            </button>
+            <button class="button button-primary" type="submit">Send</button>
+          </div>
+          <div class="composer-footer">
+            <button id="voice" class="quiet-button" type="button" aria-pressed="false" hidden>Read replies aloud</button>
+            <span id="voice-info"></span>
+          </div>
+        </form>
+      </section>
+
+      <aside class="summary panel" aria-labelledby="summary-heading">
+        <div class="summary-heading">
+          <h2 id="summary-heading">Order summary</h2>
+          <p>Selections update as you go.</p>
+        </div>
+        <dl id="summary-items" class="summary-items"></dl>
+        <div id="order-state" class="order-state">Demo only · Simulated payment</div>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

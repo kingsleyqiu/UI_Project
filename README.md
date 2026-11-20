@@ -1,56 +1,55 @@
 # Pizza Ordering Assistant
 
-SOFE4850 UX Final Project, Fall 2026 - Group 10.
+**Group 10 · SOFE 4850U · User Interface and Experience Design · Fall 2026**
 
-Team: Aryan Kumar, Qian Qiu, and Mohit Gajula.
+Aryan Kumar, Qian Qiu, and Mohit Gajula
 
-## Project scope
+## Project overview
 
-The group proposal describes a desktop website prototype with a visible 2D avatar that guides users through a pizza order using typed text or voice. Payment and order confirmation are simulated.
+We are building a standalone desktop website prototype for students and other customers placing a pizza order. A visible 2D pizza-shop avatar will greet the customer, explain how to order, and ask one short question at a time. Customers can speak, type, or switch between the two. The demo will use a small menu, simulated payment selection, and simulated order confirmation.
 
-Planned features:
+## Planned ordering flow
 
-- Pickup or delivery, pizza size, crust, toppings, quantity, and payment-method selection; an address is requested for delivery only.
-- One pizza configuration per order, with a quantity choice.
-- A visible order summary, changes to individual selections, and explicit confirmation before completing the order.
-- Speech recognition, spoken replies with matching visible text, and clear listening, processing, speaking, and waiting states.
-- Recovery from unsupported toppings, incomplete delivery addresses, and speech-recognition errors while retaining the current order.
+1. Choose pickup or delivery.
+2. Select a size, crust, toppings, and quantity. Each order supports one pizza configuration.
+3. Enter an address for delivery only, then choose a simulated payment method.
+4. Review the live order summary and change individual selections while keeping the other details.
+5. Explicitly confirm the order. The assistant displays a simulated confirmation with the order details and pickup or delivery information.
 
-Status: repository initialized; the prototype has not been implemented here yet.
+The interface will show what the microphone heard, let customers retry or type a correction, and display each spoken reply as text. Keyboard-accessible controls and readable status messages will make it clear when the avatar is waiting, listening, processing, or speaking. Customers can pause, go back, or restart. The assistant will offer supported toppings after an invalid answer and ask for missing address details while retaining the rest of the order.
 
-## Team workflow
+## Figma design
 
-- `main`: shared integration branch and default branch.
-- `kingsley`: Qian Qiu's personal working branch.
-- Other teammates create and use their own branches from the latest `main`.
+The editable design includes the welcome and pizza-size screens and Pip’s idle and speaking poses. [Open the Group 10 design in Figma](https://www.figma.com/design/jpanhlrVfSLkbHgu6wJa6c?node-id=2-80).
 
-1. Make changes and commit on your own branch.
-2. Push your branch to GitHub.
-3. Open a Pull Request from your branch into `main`; review the changes before merging.
-4. After a merge, fetch the latest `main` and merge it into your own branch before continuing.
+## Design and evaluation
 
-Do not commit directly to `main` during team development. This is the team's workflow convention; branch names alone do not enforce it.
+- Prepare a persona, a user journey or task flow, a conversation flowchart, and wireframes for the main interaction states. The proposal has already been submitted.
+- Build a working desktop prototype and demonstrate voice input and spoken replies. Show one complete successful order and at least two error and recovery scenarios.
+- Verify normal completion, missing information, invalid answers, corrections, speech-recognition problems, and final confirmation.
+- Test with at least three users. Record task outcomes, difficulties, and feedback, then revise the design based on what participants did and said.
+- Present the prototype in a 5–10 minute demo. Document the design decisions, testing results, changes, limitations, and lessons learned in a final UX report of at most five pages.
 
-For Kingsley's local checkout:
+## Presentation and submissions
+
+All times are Toronto local time.
+
+| Milestone | Date and time | What to prepare |
+| --- | --- | --- |
+| Group 10 live presentation | Tuesday, November 24, 2026, 10:30–10:40 a.m. | Presentation and prototype demo |
+| Canvas Demo/Presentation upload | Monday, November 30, 2026, 11:59 p.m. | ZIP with all code and a README |
+| Canvas final project upload | Friday, December 4, 2026, 11:59 p.m. | ZIP with the final report, source files, and a README with setup steps |
+
+## Run the prototype
+
+Open `index.html` in a browser to try a typed order. Use the suggested buttons or type your replies. Use fictional addresses for delivery and select a simulated payment option shown in the app.
+
+To try voice controls, run a local server from the repository folder with Python 3.
 
 ```sh
-git switch kingsley
-git fetch origin
-git merge origin/main
-# Make changes, then stage only the intended files.
-git add README.md
-git commit -m "Describe the change"
-git push origin kingsley
+python3 -m http.server 8765 --bind 127.0.0.1
 ```
 
-Replace `README.md` with the files you actually changed. On GitHub, open a Pull Request with base `main` and compare `kingsley`.
+Open `http://127.0.0.1:8765` in Chrome. Choose **Mic** and grant microphone access if prompted. The recognized text appears in the answer field so you can edit it before sending. The **Read replies aloud** button enables spoken prompts. Typing works throughout the order.
 
-## Course deliverables
-
-The supplied guideline calls for a proposal, at least one persona, a user journey/task flow, a conversation flow, wireframes, a high-fidelity or working prototype, a voice interaction demo, usability testing with at least three users, a final UX report, and a 5-10 minute presentation/demo.
-
-The prototype must demonstrate a complete successful task and at least two error/recovery situations. Required conversation checks cover normal completion, missing information, invalid answers, corrections, voice-recognition problems, and final confirmation.
-
-The guideline lists presentations on November 30 and December 4, 2026, and a final report deadline of December 4, 2026 at 11:59 pm, with a five-page report limit. The Canvas ZIP must contain documented source files and the final report. Check Canvas for the team's presentation slot and any later course updates.
-
-This summary records the supplied proposal and guideline; planned features and deliverables are not claims of completed work.
+The current prototype covers pickup and delivery, review and editing, and simulated confirmation. The [typed pickup script](conversation-flow.md) includes a sample order and recovery paths.
