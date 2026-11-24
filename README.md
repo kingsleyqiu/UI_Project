@@ -1,56 +1,109 @@
-# Pizza Ordering Assistant
+# Pip's Pizza — Interactive Ordering Assistant
 
-SOFE4850 UX Final Project, Fall 2026 - Group 10.
+A conversational pizza ordering website supporting voice, text,
+and interactive controls.
 
-Team: Aryan Kumar, Qian Qiu, and Mohit Gajula.
+**Ontario Tech University**  
+SOFE 4850U — User Interface and Experience Design  
+Fall 2026 | Group 10
 
-## Project scope
+## Overview
 
-The group proposal describes a desktop website prototype with a visible 2D avatar that guides users through a pizza order using typed text or voice. Payment and order confirmation are simulated.
+Pip guides customers through the pizza ordering process using
+a conversational interface, live order summary, and simulated checkout.
 
-Planned features:
+## Features
 
-- Pickup or delivery, pizza size, crust, toppings, quantity, and payment-method selection; an address is requested for delivery only.
-- One pizza configuration per order, with a quantity choice.
-- A visible order summary, changes to individual selections, and explicit confirmation before completing the order.
-- Speech recognition, spoken replies with matching visible text, and clear listening, processing, speaking, and waiting states.
-- Recovery from unsupported toppings, incomplete delivery addresses, and speech-recognition errors while retaining the current order.
+- Voice recognition and spoken responses
+- Text input and suggested responses
+- Hands-free ordering
+- Natural language processing
+- Pickup and delivery options
+- Real-time order summary and pricing
+- Address validation and error recovery
+- Individual order modifications
+- Simulated payment and order confirmation
+- Estimated pickup and delivery times
+- Keyboard accessibility and reduced-motion support
 
-Status: repository initialized; the prototype has not been implemented here yet.
+## Getting Started
 
-## Team workflow
+No external dependencies or build process are required.
 
-- `main`: shared integration branch and default branch.
-- `kingsley`: Qian Qiu's personal working branch.
-- Other teammates create and use their own branches from the latest `main`.
+Clone the repository:
 
-1. Make changes and commit on your own branch.
-2. Push your branch to GitHub.
-3. Open a Pull Request from your branch into `main`; review the changes before merging.
-4. After a merge, fetch the latest `main` and merge it into your own branch before continuing.
+    git clone https://github.com/kingsleyqiu/UI_Project.git
+    cd UI_Project/pip-prototype
 
-Do not commit directly to `main` during team development. This is the team's workflow convention; branch names alone do not enforce it.
+Start the local server:
 
-For Kingsley's local checkout:
+    python3 -m http.server 8765 --bind 127.0.0.1
 
-```sh
-git switch kingsley
-git fetch origin
-git merge origin/main
-# Make changes, then stage only the intended files.
-git add README.md
-git commit -m "Describe the change"
-git push origin kingsley
-```
+Open http://localhost:8765 in Google Chrome.
 
-Replace `README.md` with the files you actually changed. On GitHub, open a Pull Request with base `main` and compare `kingsley`.
+Allow microphone access to enable voice interaction.
+Voice recognition requires an internet connection.
 
-## Course deliverables
+## Technologies
 
-The supplied guideline calls for a proposal, at least one persona, a user journey/task flow, a conversation flow, wireframes, a high-fidelity or working prototype, a voice interaction demo, usability testing with at least three users, a final UX report, and a 5-10 minute presentation/demo.
+| Technology | Purpose |
+|---|---|
+| HTML5 | Website structure |
+| CSS3 | Styling and animations |
+| JavaScript | Application logic |
+| Web Speech API | Speech recognition and synthesis |
+| Natural Language Processing | Intent and order extraction |
+| Node.js | Automated unit testing |
+| Figma | Interface design |
 
-The prototype must demonstrate a complete successful task and at least two error/recovery situations. Required conversation checks cover normal completion, missing information, invalid answers, corrections, voice-recognition problems, and final confirmation.
+## Project Structure
 
-The guideline lists presentations on November 30 and December 4, 2026, and a final report deadline of December 4, 2026 at 11:59 pm, with a five-page report limit. The Canvas ZIP must contain documented source files and the final report. Check Canvas for the team's presentation slot and any later course updates.
+    UI_Project/
+    ├── README.md
+    ├── .gitignore
+    ├── docs/
+    ├── screenshots/
+    └── pip-prototype/
+        ├── index.html
+        ├── css/
+        │   └── styles.css
+        ├── js/
+        │   ├── app.js
+        │   ├── menu.js
+        │   ├── nlu.js
+        │   └── voice.js
+        ├── tests/
+        │   └── nlu.test.js
+        ├── conversation-flow.md
+        └── README.md
 
-This summary records the supplied proposal and guideline; planned features and deliverables are not claims of completed work.
+## Testing
+
+Run the natural language processing tests using Node.js 18 or later:
+
+    cd pip-prototype
+    node --test tests/nlu.test.js
+
+## Documentation
+
+- [Prototype Documentation](pip-prototype/README.md)
+- [Conversation Flow and Demo Script](pip-prototype/conversation-flow.md)
+- [System Design](docs/system-design.md)
+- [Original Project Scope (Historical)](docs/original-project-scope.md)
+- [Figma Design](https://www.figma.com/design/jpanhlrVfSLkbHgu6wJa6c?node-id=2-80)
+
+## Team
+
+- Aryan Kumar
+- Qian Qiu
+- Mohit Gajula
+
+## Development Workflow
+
+Changes are developed on individual branches and integrated
+into main through pull requests.
+
+## Disclaimer
+
+This application is an academic prototype. Payments, order
+processing, and delivery estimates are simulated.
