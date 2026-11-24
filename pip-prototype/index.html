@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Order a pizza by talking or typing to Pip, a friendly pizza-shop assistant. Class prototype with simulated payment.">
+  <title>Pip's Pizza</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 6c6-3.5 12-3.5 18 0l-9 16z' fill='%23F7C95C' stroke='%2312352A' stroke-width='1.6' stroke-linejoin='round'/%3E%3Ccircle cx='10' cy='10' r='1.6' fill='%23C8371F'/%3E%3Ccircle cx='14' cy='13' r='1.6' fill='%23C8371F'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/menu.js" defer></script>
+  <script src="js/nlu.js" defer></script>
+  <script src="js/voice.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#answer">Skip to the answer field</a>
+
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Pip's Pizza, start page">
+      <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 6c6-3.5 12-3.5 18 0l-9 16z" fill="#F7C95C" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M3 6c6-3.5 12-3.5 18 0" fill="none" stroke="#E08A4C" stroke-width="2.6" stroke-linecap="round"/>
+        <circle cx="10" cy="10.5" r="1.5" fill="#C8371F"/><circle cx="14.2" cy="12.5" r="1.5" fill="#C8371F"/><circle cx="12" cy="16.5" r="1.2" fill="#C8371F"/>
+      </svg>
+      <span>Pip's Pizza</span>
+    </a>
+    <nav class="progress" aria-label="Order progress">
+      <ol id="stepper" class="stepper"></ol>
+    </nav>
+    <div class="top-actions">
+      <button id="pause-btn" class="btn btn-quiet" type="button" aria-pressed="false" disabled>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
+        <span>Pause</span>
+      </button>
+      <button id="restart-btn" class="btn btn-quiet" type="button" disabled>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5"/></svg>
+        <span>Start over</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="app" class="app" data-screen="welcome">
+    <!-- Pip's stage -->
+    <section class="stage" aria-labelledby="pip-name">
+      <h2 id="pip-name" class="sr-only">Pip, your ordering assistant</h2>
+      <div class="pip-frame">
+        <svg id="pip" class="pip" data-activity="idle" data-mood="waving" viewBox="0 0 240 220" role="img" aria-label="Pip, a pizza slice wearing a chef's hat">
+          <ellipse class="pip-shadow" cx="120" cy="204" rx="58" ry="8"/>
+          <g class="pip-body">
+            <path class="pip-legs" d="M111 176l-7 16m25-16 7 16"/>
+            <g class="pip-arm pip-arm-left">
+              <path class="pip-limb" d="M66 126c-11 4-19 0-25-9"/>
+              <path class="pip-hand" d="M34 115c-5-9 4-15 10-7l5 4c3 3 0 9-4 10-4 1-8-3-11-7Z"/>
+            </g>
+            <g class="pip-arm pip-arm-right">
+              <path class="pip-limb" d="M172 127c11 3 20-2 24-12"/>
+              <path class="pip-hand" d="M205 115c5-9-4-15-10-7l-5 4c-3 3 0 9 4 10 4 1 8-3 11-7Z"/>
+            </g>
+            <path class="pip-cheese" d="M49 94c32-25 107-27 142-1l-61 90c-5 8-15 8-20 0L49 94Z"/>
+            <path class="pip-drip" d="M92 140c0 8 6 8 6 0m38 6c0 7 5 7 5 0"/>
+            <path class="pip-crust" d="M50 102c41-23 98-23 139 0 8 4 16-6 10-12-35-31-123-31-158 0-6 6 2 16 9 12Z"/>
+            <path class="pip-hat" d="M85 84V61c-17-2-21-16-13-26 5-7 15-9 23-5 2-13 13-22 26-22s24 8 27 21c8-3 17-1 23 6 8 10 4 24-13 26v23c-20-7-53-7-73 0Z"/>
+            <path class="pip-hat-band" d="M95 63c17-4 36-4 54 0"/>
+            <circle class="pip-pep" cx="76" cy="113" r="8"/>
+            <circle class="pip-pep" cx="163" cy="114" r="8"/>
+            <circle class="pip-pep" cx="121" cy="165" r="7"/>
+            <ellipse class="pip-cheek" cx="86" cy="135" rx="7" ry="4"/>
+            <ellipse class="pip-cheek" cx="153" cy="135" rx="7" ry="4"/>
+            <path class="pip-brow pip-brow-left" d="M90 110c4-3 10-4 15-3"/>
+            <path class="pip-brow pip-brow-right" d="M134 107c5-1 11 0 15 3"/>
+            <g class="pip-eyes">
+              <ellipse cx="98" cy="123" rx="4.6" ry="6.3"/>
+              <ellipse cx="141" cy="123" rx="4.6" ry="6.3"/>
+              <circle class="pip-glint" cx="99.6" cy="120.6" r="1.5"/>
+              <circle class="pip-glint" cx="142.6" cy="120.6" r="1.5"/>
+            </g>
+            <path class="pip-mouth m-smile" d="M112 138c3 5 9 6 13 1"/>
+            <ellipse class="pip-mouth m-talk" cx="119" cy="141" rx="6.5" ry="7.5"/>
+            <ellipse class="pip-mouth m-o" cx="119" cy="140" rx="3.6" ry="4.4"/>
+            <path class="pip-mouth m-wavy" d="M110 141c3-3 6 3 9 0s6 3 9 0"/>
+            <path class="pip-mouth m-grin" d="M108 135c4 11 19 11 23 0Z"/>
+          </g>
+          <g class="pip-listen-waves">
+            <path d="M212 92c6 7 6 19 0 26"/>
+            <path d="M221 85c11 11 11 30 0 41"/>
+          </g>
+          <g class="pip-think-dots">
+            <circle cx="198" cy="56" r="4"/><circle cx="210" cy="44" r="5"/><circle cx="224" cy="30" r="6"/>
+          </g>
+          <path class="pip-sparkle" d="M30 76v10m-5-5h10m172-14v12m-6-6h12"/>
+        </svg>
+      </div>
+      <div class="counter" aria-hidden="true"></div>
+
+      <div class="stage-panel">
+        <p class="pip-status" id="pip-status" data-activity="idle">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span id="status-text">Say hi to Pip</span>
+        </p>
+        <div class="switches">
+          <button id="voice-toggle" class="switch" type="button" role="switch" aria-checked="false">
+            <span class="switch-track" aria-hidden="true"><span class="switch-thumb"></span></span>
+            <span class="switch-label">Read replies aloud</span>
+          </button>
+          <button id="handsfree-toggle" class="switch" type="button" role="switch" aria-checked="false">
+            <span class="switch-track" aria-hidden="true"><span class="switch-thumb"></span></span>
+            <span class="switch-label">Listen after Pip speaks</span>
+          </button>
+        </div>
+        <p id="voice-note" class="voice-note" hidden></p>
+      </div>
+    </section>
+
+    <!-- Conversation -->
+    <section class="chat" aria-labelledby="chat-title">
+      <h2 id="chat-title" class="sr-only">Conversation with Pip</h2>
+
+      <div id="welcome" class="welcome">
+        <h1>Hi, I'm Pip. Let's get you a pizza.</h1>
+        <p class="welcome-copy">I'll ask a few quick questions about how you want it. Answer out loud or type, whichever is easier, and change anything before you order.</p>
+        <div class="welcome-actions">
+          <button id="start-voice" class="btn btn-tomato btn-lg" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+            Talk to Pip
+          </button>
+          <button id="start-type" class="btn btn-outline btn-lg" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10"/></svg>
+            Type my answers
+          </button>
+        </div>
+        <p id="welcome-voice-note" class="welcome-note" hidden></p>
+        <dl class="welcome-menu" aria-label="Menu at a glance">
+          <div><dt>Sizes</dt><dd>Small 10″, medium 12″, large 14″</dd></div>
+          <div><dt>Crusts</dt><dd>Thin or hand-tossed</dd></div>
+          <div><dt>Toppings</dt><dd>Pepperoni, mushrooms, bell peppers, onions, extra cheese</dd></div>
+        </dl>
+        <p class="welcome-note">Class prototype. Payment and confirmation are simulated, so nothing is charged.</p>
+      </div>
+
+      <ol id="transcript" class="transcript" role="log" aria-live="polite" aria-relevant="additions" hidden></ol>
+
+      <div class="dock" id="dock" hidden>
+        <div id="replies" class="replies" role="group" aria-label="Suggested answers"></div>
+        <form id="composer" class="composer" autocomplete="off">
+          <label for="answer" class="sr-only">Your answer</label>
+          <div class="composer-row">
+            <input id="answer" type="text" maxlength="160" placeholder="Type your answer, or tap the mic" aria-describedby="heard">
+            <button id="mic-btn" class="mic" type="button" aria-pressed="false" aria-label="Start voice input">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+            </button>
+            <button class="btn btn-ink send" type="submit">Send</button>
+          </div>
+          <div id="autosend" class="autosend" hidden><span></span></div>
+          <div class="composer-meta">
+            <p id="heard" class="heard" aria-live="polite"></p>
+            <div class="nav-actions">
+              <button id="back-btn" class="btn btn-quiet btn-sm" type="button" disabled>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>Back
+              </button>
+              <button id="repeat-btn" class="btn btn-quiet btn-sm" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 2l3 3-3 3M4 11V9a4 4 0 0 1 4-4h12M7 22l-3-3 3-3M20 13v2a4 4 0 0 1-4 4H4"/></svg>Repeat
+              </button>
+              <button id="help-btn" class="btn btn-quiet btn-sm" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5v.7M12 17h.01"/></svg>What can I say?
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Order ticket -->
+    <aside class="ticket-col" aria-labelledby="ticket-title">
+      <div id="ticket" class="ticket">
+        <header class="ticket-head">
+          <h2 id="ticket-title">Order ticket</h2>
+          <p id="ticket-meta" class="ticket-meta">Fills in as you answer</p>
+        </header>
+        <ul id="ticket-lines" class="ticket-lines"></ul>
+        <div id="ticket-totals" class="ticket-totals" hidden></div>
+        <p class="ticket-foot">Demo only. No real payment is taken.</p>
+        <div id="stamp" class="stamp" aria-hidden="true">Order<br>placed</div>
+      </div>
+      <div id="eta" class="eta" hidden></div>
+    </aside>
+  </main>
+</body>
+</html>
